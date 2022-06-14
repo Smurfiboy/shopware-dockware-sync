@@ -1,0 +1,35 @@
+version: '2.4'
+
+services:
+  shop:
+    container_name: shop
+    image: dockware/essentials:latest
+    ports:
+      - "22:22"     # ssh
+      - "80:80"     # apache2
+      - "443:443"   # apache2 https
+      - "8888:8888" # watch admin
+      - "9998:9998" # watch storefront proxy
+      - "9999:9999" # watch storefront
+      - "3306:3306" # mysql port
+    volumes:
+      - "shopware-volume:/var/www/html:nocopy"
+      - "mysql:/var/lib/mysql"
+    #  - "./src:/var/www/html/custom/plugins"
+    networks:
+      - web
+    environment:
+      - XDEBUG_ENABLED=0
+
+volumes:
+   shopware-volume:
+    external: true
+   mysql:
+    external: false
+
+## ***********************************************************************
+##  NETWORKS
+## ***********************************************************************
+networks:
+  web:
+    external: false

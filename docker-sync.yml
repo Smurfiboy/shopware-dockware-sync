@@ -1,0 +1,8 @@
+version: "2"
+syncs:
+  shopware-volume:
+    sync_strategy: 'unison'
+    #unison_image: eugenmayer/unison:2.51.3-4.12.0-ARM64 #only for Mac M1/M2
+    notify_terminal: true
+    src: '.'
+    sync_excludes: ['var/cache', '.docker-sync', '.DS_Store', 'docker-compose.yml', 'docker-sync.yml']
