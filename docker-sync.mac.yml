@@ -2,6 +2,8 @@ version: "2"
 syncs:
   shopware-volume:
     sync_strategy: 'unison'
-    notify_terminal: true
+    notify_terminal: true   
     src: '.'
-    sync_excludes: ['var/cache', '.docker-sync', '.DS_Store', 'docker-compose.yml', 'docker-sync.yml']
+    sync_userid: '33'
+    sync_excludes: ['var/cache', '.docker-sync', '.DS_Store', 'docker-compose.yml', 'docker-sync.*.yml', 'start-all.sh', '.git', '.gitignore']
+    watch_excludes: ['var/cache', '.docker-sync', '.DS_Store', 'docker-compose.yml', 'docker-sync.*.yml', 'start-all.sh', '.git', '.gitignore' ]
